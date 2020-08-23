@@ -1,0 +1,14 @@
+target/
+*.iml
+*.hnir
+*~
+.idea
+.settings
+.classpath
+.project
+.cache
+.sbtserver
+project/.sbtserver
+project/project
+tags
+nohup.out
