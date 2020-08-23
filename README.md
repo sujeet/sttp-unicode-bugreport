@@ -1,9 +1,13 @@
 ## Bug report in STTP's unicode handling in scala native
 
-When server serves `"ह"`, the JVM sttp client returns it correctly
-as `"ह"` (string) or as `ByteArray(34, -32, -92, -71, 34)`.
-The Scala Native sttp client, however returns it incorrectly as `"9"` (string)
-or as `ByteArray(34, 57, 34)`.
+When server serves `"ह"`,the JVM sttp client returns it correctly as
+```
+"ह" (string) or as ByteArray(34, -32, -92, -71, 34)
+```
+The Scala Native sttp client, however returns it incorrectly as
+```
+"9" (string) or as ByteArray(34, 57, 34)
+```
 
 
 Following are the repro steps:
@@ -81,7 +85,7 @@ serve()
 ```
 
 `jvm-version.sc` (Scala JVM code)
-```
+```scala
 import $ivy.`com.softwaremill.sttp.client::core:2.2.5`
 import sttp.client.quick._
 
@@ -98,7 +102,7 @@ println(s"bytearray: $byteArray")
 ```
 
 `SttpUnicode.scala` (Scala Native code)
-```
+```scala
 package unicode
 
 import sttp.client.quick._
